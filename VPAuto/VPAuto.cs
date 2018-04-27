@@ -91,30 +91,30 @@ namespace VPAuto
             FarFieldCurrentDirection,
             FarFieldDiffusionCoefficient
         }
-        private float PortDiameter = -999f;
-        private float PortElevation = -999f;
-        private float VerticalAngle = -999f;
-        private float HorizontalAngle = -999f;
-        private float NumberOfPorts = -999f;
-        private float PortSpacing = -999f;
-        private float AcuteMixZone = -999f;
-        private float ChronicMixZone = -999f;
-        private float PortDepth = -999f;
-        private float EffluentFlow = -999f;
-        private float EffluentSalinity = -999f;
-        private float EffluentTemperature = -999f;
-        private float EffluentConcentration = -999f;
+        private float? PortDiameter = null;
+        private float? PortElevation = null;
+        private float? VerticalAngle = null;
+        private float? HorizontalAngle = null;
+        private float? NumberOfPorts = null;
+        private float? PortSpacing = null;
+        private float? AcuteMixZone = null;
+        private float? ChronicMixZone = null;
+        private float? PortDepth = null;
+        private float? EffluentFlow = null;
+        private float? EffluentSalinity = null;
+        private float? EffluentTemperature = null;
+        private float? EffluentConcentration = null;
 
-        private float[] MeasurementDepth = { -999f, -999f, -999f, -999f, -999f, -999f, -999f, -999f };
-        private float[] CurrentSpeed = { -999f, -999f, -999f, -999f, -999f, -999f, -999f, -999f };
-        private float[] CurrentDirection = { -999f, -999f, -999f, -999f, -999f, -999f, -999f, -999f };
-        private float[] AmbientSalinity = { -999f, -999f, -999f, -999f, -999f, -999f, -999f, -999f };
-        private float[] AmbientTemperature = { -999f, -999f, -999f, -999f, -999f, -999f, -999f, -999f };
-        private float[] BackgroundConcentration = { -999f, -999f, -999f, -999f, -999f, -999f, -999f, -999f };
-        private float[] PollutantDecayRate = { -999f, -999f, -999f, -999f, -999f, -999f, -999f, -999f };
-        private float[] FarFieldCurrentSpeed = { -999f, -999f, -999f, -999f, -999f, -999f, -999f, -999f };
-        private float[] FarFieldCurrentDirection = { -999f, -999f, -999f, -999f, -999f, -999f, -999f, -999f };
-        private float[] FarFieldDiffusionCoefficient = { -999f, -999f, -999f, -999f, -999f, -999f, -999f, -999f };
+        private float?[] MeasurementDepth = { null, null, null, null, null, null, null, null };
+        private float?[] CurrentSpeed = { null, null, null, null, null, null, null, null };
+        private float?[] CurrentDirection = { null, null, null, null, null, null, null, null };
+        private float?[] AmbientSalinity = { null, null, null, null, null, null, null, null };
+        private float?[] AmbientTemperature = { null, null, null, null, null, null, null, null };
+        private float?[] BackgroundConcentration = { null, null, null, null, null, null, null, null };
+        private float?[] PollutantDecayRate = { null, null, null, null, null, null, null, null };
+        private float?[] FarFieldCurrentSpeed = { null, null, null, null, null, null, null, null };
+        private float?[] FarFieldCurrentDirection = { null, null, null, null, null, null, null, null };
+        private float?[] FarFieldDiffusionCoefficient = { null, null, null, null, null, null, null, null };
 
         #endregion Variables
 
@@ -242,9 +242,9 @@ namespace VPAuto
         {
             for (int Row = 1; Row < 9; Row++)
             {
-                if (!MeasurementDepth[Row - 1].ToString().StartsWith("-999"))
+                if (MeasurementDepth[Row - 1] != null)
                 {
-                    if (MeasurementDepth[Row - 1].ToString().StartsWith("-999"))
+                    if (MeasurementDepth[Row - 1] == null)
                     {
                         AmbientEnterData(AmbientVariable.MeasurementDepth, "", Row);
                     }
@@ -252,7 +252,7 @@ namespace VPAuto
                     {
                         AmbientEnterData(AmbientVariable.MeasurementDepth, string.Format("{0:F2}", MeasurementDepth[Row - 1]), Row);
                     }
-                    if (CurrentSpeed[Row - 1].ToString().StartsWith("-999"))
+                    if (CurrentSpeed[Row - 1] == null)
                     {
                         AmbientEnterData(AmbientVariable.CurrentSpeed, "", Row);
                     }
@@ -260,7 +260,7 @@ namespace VPAuto
                     {
                         AmbientEnterData(AmbientVariable.CurrentSpeed, string.Format("{0:F6}", CurrentSpeed[Row - 1]), Row);
                     }
-                    if (CurrentDirection[Row - 1].ToString().StartsWith("-999"))
+                    if (CurrentDirection[Row - 1] == null)
                     {
                         AmbientEnterData(AmbientVariable.CurrentDirection, "", Row);
                     }
@@ -268,7 +268,7 @@ namespace VPAuto
                     {
                         AmbientEnterData(AmbientVariable.CurrentDirection, string.Format("{0:F1}", CurrentDirection[Row - 1]), Row);
                     }
-                    if (AmbientSalinity[Row - 1].ToString().StartsWith("-999"))
+                    if (AmbientSalinity[Row - 1] == null)
                     {
                         AmbientEnterData(AmbientVariable.AmbientSalinity, "", Row);
                     }
@@ -276,7 +276,7 @@ namespace VPAuto
                     {
                         AmbientEnterData(AmbientVariable.AmbientSalinity, string.Format("{0:F1}", AmbientSalinity[Row - 1]), Row);
                     }
-                    if (AmbientTemperature[Row - 1].ToString().StartsWith("-999"))
+                    if (AmbientTemperature[Row - 1] == null)
                     {
                         AmbientEnterData(AmbientVariable.AmbientTemperature, "", Row);
                     }
@@ -284,7 +284,7 @@ namespace VPAuto
                     {
                         AmbientEnterData(AmbientVariable.AmbientTemperature, string.Format("{0:F1}", AmbientTemperature[Row - 1]), Row);
                     }
-                    if (BackgroundConcentration[Row - 1].ToString().StartsWith("-999"))
+                    if (BackgroundConcentration[Row - 1] == null)
                     {
                         AmbientEnterData(AmbientVariable.BackgroundConcentration, "", Row);
                     }
@@ -292,7 +292,7 @@ namespace VPAuto
                     {
                         AmbientEnterData(AmbientVariable.BackgroundConcentration, string.Format("{0:F0}", BackgroundConcentration[Row - 1]), Row);
                     }
-                    if (PollutantDecayRate[Row - 1].ToString().StartsWith("-999"))
+                    if (PollutantDecayRate[Row - 1] == null)
                     {
                         AmbientEnterData(AmbientVariable.PollutantDecayRate, "", Row);
                     }
@@ -300,7 +300,7 @@ namespace VPAuto
                     {
                         AmbientEnterData(AmbientVariable.PollutantDecayRate, string.Format("{0:F6}", PollutantDecayRate[Row - 1]), Row);
                     }
-                    if (FarFieldCurrentSpeed[Row - 1].ToString().StartsWith("-999"))
+                    if (FarFieldCurrentSpeed[Row - 1] == null)
                     {
                         AmbientEnterData(AmbientVariable.FarFieldCurrentSpeed, "", Row);
                     }
@@ -308,7 +308,7 @@ namespace VPAuto
                     {
                         AmbientEnterData(AmbientVariable.FarFieldCurrentSpeed, string.Format("{0:F3}", FarFieldCurrentSpeed[Row - 1]), Row);
                     }
-                    if (FarFieldCurrentDirection[Row - 1].ToString().StartsWith("-999"))
+                    if (FarFieldCurrentDirection[Row - 1] == null)
                     {
                         AmbientEnterData(AmbientVariable.FarFieldCurrentDirection, "", Row);
                     }
@@ -316,7 +316,7 @@ namespace VPAuto
                     {
                         AmbientEnterData(AmbientVariable.FarFieldCurrentDirection, string.Format("{0:F1}", FarFieldCurrentDirection[Row - 1]), Row);
                     }
-                    if (FarFieldDiffusionCoefficient[Row - 1].ToString().StartsWith("-999"))
+                    if (FarFieldDiffusionCoefficient[Row - 1] == null)
                     {
                         AmbientEnterData(AmbientVariable.FarFieldDiffusionCoefficient, "", Row);
                     }
@@ -391,49 +391,49 @@ namespace VPAuto
                 }
                 lblVPScenarioIDValue.Text = ScenarioID.ToString();
 
-                PortDiameter = (float)vpScenarioToRun.PortDiameter_m;
+                PortDiameter = (float?)vpScenarioToRun.PortDiameter_m;
                 lblPortDiameterValue.Text = PortDiameter.ToString();
-                PortElevation = (float)vpScenarioToRun.PortElevation_m;
+                PortElevation = (float?)vpScenarioToRun.PortElevation_m;
                 lblPortElevationValue.Text = PortElevation.ToString();
-                VerticalAngle = (float)vpScenarioToRun.VerticalAngle_deg;
+                VerticalAngle = (float?)vpScenarioToRun.VerticalAngle_deg;
                 lblVerticalAngleValue.Text = VerticalAngle.ToString();
-                HorizontalAngle = (float)vpScenarioToRun.HorizontalAngle_deg;
+                HorizontalAngle = (float?)vpScenarioToRun.HorizontalAngle_deg;
                 lblHorizontalAngleValue.Text = HorizontalAngle.ToString();
-                NumberOfPorts = (float)vpScenarioToRun.NumberOfPorts;
+                NumberOfPorts = (float?)vpScenarioToRun.NumberOfPorts;
                 lblNumberOfPortsValue.Text = NumberOfPorts.ToString();
-                PortSpacing = (float)vpScenarioToRun.PortSpacing_m;
+                PortSpacing = (float?)vpScenarioToRun.PortSpacing_m;
                 lblPortSpacingValue.Text = PortSpacing.ToString();
-                AcuteMixZone = (float)vpScenarioToRun.AcuteMixZone_m;
+                AcuteMixZone = (float?)vpScenarioToRun.AcuteMixZone_m;
                 lblAcuteMixZoneValue.Text = AcuteMixZone.ToString();
-                ChronicMixZone = (float)vpScenarioToRun.ChronicMixZone_m;
-                PortDepth = (float)vpScenarioToRun.PortDepth_m;
-                EffluentFlow = (float)vpScenarioToRun.EffluentFlow_m3_s;
-                EffluentSalinity = (float)vpScenarioToRun.EffluentSalinity_PSU;
-                EffluentTemperature = (float)vpScenarioToRun.EffluentTemperature_C;
-                EffluentConcentration = (float)vpScenarioToRun.EffluentConcentration_MPN_100ml;
+                ChronicMixZone = (float?)vpScenarioToRun.ChronicMixZone_m;
+                PortDepth = (float?)vpScenarioToRun.PortDepth_m;
+                EffluentFlow = (float?)vpScenarioToRun.EffluentFlow_m3_s;
+                EffluentSalinity = (float?)vpScenarioToRun.EffluentSalinity_PSU;
+                EffluentTemperature = (float?)vpScenarioToRun.EffluentTemperature_C;
+                EffluentConcentration = (float?)vpScenarioToRun.EffluentConcentration_MPN_100ml;
 
                 int Row = 0;
-                float OldMeasurmentDepth = (float)vpScenarioToRun.AmbientList[0].MeasurementDepth_m;
+                float? OldMeasurmentDepth = (float?)vpScenarioToRun.AmbientList[0].MeasurementDepth_m;
                 foreach (VPAmbientModel vpa in vpScenarioToRun.AmbientList)
                 {
-                    if ((float)vpa.MeasurementDepth_m == -999)
+                    if (vpa.MeasurementDepth_m == null)
                     {
                         MeasurementDepth[Row] = OldMeasurmentDepth;
                     }
                     else
                     {
-                        MeasurementDepth[Row] = (float)vpa.MeasurementDepth_m;
+                        MeasurementDepth[Row] = (float?)vpa.MeasurementDepth_m;
                     }
                     OldMeasurmentDepth = MeasurementDepth[Row];
-                    CurrentSpeed[Row] = (float)vpa.CurrentSpeed_m_s;
-                    CurrentDirection[Row] = (float)vpa.CurrentDirection_deg;
-                    AmbientSalinity[Row] = (float)vpa.AmbientSalinity_PSU;
-                    AmbientTemperature[Row] = (float)vpa.AmbientTemperature_C;
-                    BackgroundConcentration[Row] = (float)vpa.BackgroundConcentration_MPN_100ml;
-                    PollutantDecayRate[Row] = (float)vpa.PollutantDecayRate_per_day;
-                    FarFieldCurrentSpeed[Row] = (float)vpa.FarFieldCurrentSpeed_m_s;
-                    FarFieldCurrentDirection[Row] = (float)vpa.FarFieldCurrentDirection_deg;
-                    FarFieldDiffusionCoefficient[Row] = (float)vpa.FarFieldDiffusionCoefficient;
+                    CurrentSpeed[Row] = (float?)vpa.CurrentSpeed_m_s;
+                    CurrentDirection[Row] = (float?)vpa.CurrentDirection_deg;
+                    AmbientSalinity[Row] = (float?)vpa.AmbientSalinity_PSU;
+                    AmbientTemperature[Row] = (float?)vpa.AmbientTemperature_C;
+                    BackgroundConcentration[Row] = (float?)vpa.BackgroundConcentration_MPN_100ml;
+                    PollutantDecayRate[Row] = (float?)vpa.PollutantDecayRate_per_day;
+                    FarFieldCurrentSpeed[Row] = (float?)vpa.FarFieldCurrentSpeed_m_s;
+                    FarFieldCurrentDirection[Row] = (float?)vpa.FarFieldCurrentDirection_deg;
+                    FarFieldDiffusionCoefficient[Row] = (float?)vpa.FarFieldDiffusionCoefficient;
                     Row += 1;
                 }
 
